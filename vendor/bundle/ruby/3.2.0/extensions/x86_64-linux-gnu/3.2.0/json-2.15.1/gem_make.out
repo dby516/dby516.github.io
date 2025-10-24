@@ -1,0 +1,31 @@
+current directory: /mnt/d/Projects/dby516.github.io/vendor/bundle/ruby/3.2.0/gems/json-2.15.1/ext/json/ext/parser
+/usr/bin/ruby3.2 -I/usr/lib/ruby/vendor_ruby extconf.rb
+checking for rb_enc_interned_str() in ruby/encoding.h... yes
+checking for rb_hash_new_capa() in ruby.h... yes
+checking for rb_hash_bulk_insert() in ruby.h... yes
+checking for strnlen() in string.h... yes
+checking for whether -std=c99 is accepted as CFLAGS... yes
+checking for x86intrin.h... yes
+checking for cpuid.h... yes
+creating Makefile
+
+current directory: /mnt/d/Projects/dby516.github.io/vendor/bundle/ruby/3.2.0/gems/json-2.15.1/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20251021-2779-gaviis sitelibdir\=./.gem.20251021-2779-gaviis clean
+make: Warning: File 'Makefile' has modification time 0.3 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /mnt/d/Projects/dby516.github.io/vendor/bundle/ruby/3.2.0/gems/json-2.15.1/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20251021-2779-gaviis sitelibdir\=./.gem.20251021-2779-gaviis
+make: Warning: File 'Makefile' has modification time 0.26 s in the future
+compiling parser.c
+linking shared-object json/ext/parser.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /mnt/d/Projects/dby516.github.io/vendor/bundle/ruby/3.2.0/gems/json-2.15.1/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20251021-2779-gaviis sitelibdir\=./.gem.20251021-2779-gaviis install
+make: Warning: File 'parser.so' has modification time 0.35 s in the future
+/usr/bin/install -c -m 0755 parser.so ./.gem.20251021-2779-gaviis/json/ext
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /mnt/d/Projects/dby516.github.io/vendor/bundle/ruby/3.2.0/gems/json-2.15.1/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20251021-2779-gaviis sitelibdir\=./.gem.20251021-2779-gaviis clean
