@@ -1,7 +1,7 @@
 # main links links
 main:
   - title: "Projects"
-    url: /projects/
+    url: /#projects
     
   - title: "Publications"
     url: /publications/
@@ -10,7 +10,10 @@ main:
   #   url: /talks/    
 
   - title: "Teaching"
-    url: /#teaching    
+    url: /#teaching
+
+  - title: "CV"
+    url: /files/CV_dby516.pdf
     
   # - title: "Portfolio"
   #   url: /portfolio/

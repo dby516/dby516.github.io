@@ -7,6 +7,7 @@ redirect_from:
   - /about.html
 ---
 
+<h1 id="about">About me</h1>
 I am a 2nd-year Master's student in Computer Science at [Columbia University](https://www.columbia.edu/). I received my Bachelor of Engineering degree from [Zhejiang University](https://www.zju.edu.cn/english/) in China.  
 
 My research interests lie broadly in Machine Learning, Deep Learning and their intersections with Robot Navigation, Manipulation and Computer Vision. I'm especially interested in enabling learning-based methods to benefit robot navigation and motion in open-world environments, as well as in quantifying and constraining the uncertainty introduced by learning methods to form a strong, effective, safe, and trustworthy autonomous system.
@@ -17,9 +18,8 @@ News
 ======
 [Pending]
 
-Projects
-======
 
+<h1 id="projects">Projects</h1>
 
 {% for post in site.projects reversed %}
   {% include archive-single.html %}
