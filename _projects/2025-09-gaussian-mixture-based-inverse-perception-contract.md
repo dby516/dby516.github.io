@@ -5,7 +5,7 @@ permalink: /project/2025-09-gaussian-mixture-based-inverse-perception-contract
 excerpt: 'This project models perception uncertainty for safe navigation by representing uncertainty as multiple Gaussians, the approach captures fine-grained structures that [baseline method](https://arxiv.org/abs/2309.13515) overlook. This enables more effective motion planning while maintaining probabilistic safety guarantees.'
 date: 2025-9-30
 pic: '/images/projects/pic_2025-09-gaussian-mixture-based-inverse-perception-contract.png'
-venue: 'Preprint awaiting upload to arXiv'
+venue: 'American Control Conference(ACC), 2026. Oral Presentation'
 # githuburl: 'https://github.com/dby516/GMM_IPC'
 # paperurl: 'https://yourpaperurl.com'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
