@@ -44,7 +44,7 @@
       {% endif %}
 
       {% if post.collection == 'projects' %}
-        <p><i>{{ post.venue }}</i>, {{ post.date | date: "%Y" }},
+        <p><i>{{ post.venue }}</i>.
           {% if post.paperurl %}
             [<a href="{{ post.paperurl }}">paper</a>],
           {% endif %}
@@ -58,7 +58,7 @@
         <p style="font-size: 0.95em; line-height: 1.4;">
           {{ post.authors }}.
           <i>{{ post.title }}</i>.
-          <span>{{ post.venue }}, {{ post.date | date: "%Y" }}.</span>
+          <span>{{ post.venue }}.</span>
           {% if post.paperurl %}
             <a href="{{ post.paperurl }}">[paper]</a>
           {% endif %}
