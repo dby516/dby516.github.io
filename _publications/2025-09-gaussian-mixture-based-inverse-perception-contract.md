@@ -1,5 +1,5 @@
 ---
-title: "Gaussian Mixture-based Inverse Perception Contract for Uncertainty Aware Safe Navigation"
+title: "Gaussian Mixture-Based Inverse Perception Contract for Uncertainty-Aware Robot Navigation"
 collection: publications
 permalink: /publication/2025-09-gaussian-mixture-based-inverse-perception-contract
 excerpt: 'This work models perception uncertainty for safe navigation by representing uncertainty as multiple Gaussians, the approach captures fine-grained structures that [baseline method](https://arxiv.org/abs/2309.13515) overlook. This enables more effective motion planning while maintaining probabilistic safety guarantees.'
@@ -8,7 +8,7 @@ date: 2025-9-30
 authors: 'B. Du, J. Kim, Y. Lyu*'
 venue: 'American Control Conference(ACC), Oral Presentation'
 githuburl: 'https://github.com/dby516/GMM_IPC'
-paperurl: 'https://paperurl.com'
+paperurl: 'https://arxiv.org/abs/2603.04329'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
 
