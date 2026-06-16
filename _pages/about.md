@@ -15,7 +15,7 @@ My research interests lie broadly in Machine Learning, Deep Learning and their i
 
 I’m always happy to chat about research, collaborations, or shared interests — feel free to reach out via email! 🤝✨ -->
 
-<section class="about-hero" style="background-image: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.42)), url('/images/landscape.jpg');">
+<section class="about-hero" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.48) 42%, rgba(0,0,0,0.10) 72%, rgba(0,0,0,0) 100%), url('/images/landscape.jpg');">
   <div class="about-hero__content">
     <h1 id="about">About me</h1>
 
