@@ -6,7 +6,7 @@ excerpt: 'This work models perception uncertainty for safe navigation by represe
 date: 2025-9-30
 # pic: '/images/publications/pic_2025-09-gaussian-mixture-based-inverse-perception-contract.png'
 authors: 'B. Du, J. Kim, Y. Lyu*'
-venue: 'American Control Conference(ACC), Oral Presentation'
+venue: 'American Control Conference(ACC)'
 githuburl: 'https://github.com/dby516/GMM_IPC'
 paperurl: 'https://arxiv.org/abs/2603.04329'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
