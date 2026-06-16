@@ -3,7 +3,7 @@ title: "Gaussian Mixture-Based Inverse Perception Contract for Uncertainty-Aware
 collection: publications
 permalink: /publication/2025-09-gaussian-mixture-based-inverse-perception-contract
 excerpt: 'This work models perception uncertainty for safe navigation by representing uncertainty as multiple Gaussians, the approach captures fine-grained structures that [baseline method](https://arxiv.org/abs/2309.13515) overlook. This enables more effective motion planning while maintaining probabilistic safety guarantees.'
-date: 2025-9-30
+date: 2026-5-30
 # pic: '/images/publications/pic_2025-09-gaussian-mixture-based-inverse-perception-contract.png'
 authors: 'B. Du, J. Kim, Y. Lyu*'
 venue: 'American Control Conference(ACC)'
