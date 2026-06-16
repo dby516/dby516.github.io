@@ -40,7 +40,7 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 .about-hero {
   position: relative;
   min-height: calc(100vh - 72px);
-  margin: -2rem calc(50% - 50vw) 0 0;
+  margin: -2rem -2rem 0 0;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -177,11 +177,11 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 .home-reveal {
   position: relative;
   z-index: 4;
-  margin: -54px calc(50% - 50vw) 0 0;
-  padding: 0 2rem 0 2rem;
+  margin: -54px -2rem 0 0;
+  padding: 54px 2rem 0 2rem;
   background: #fff;
   border-top: 1px solid rgba(15, 23, 42, 0.08);
-  /* box-shadow: 0 -18px 40px rgba(15, 23, 42, 0.08); */
+  box-shadow: 0 -18px 40px rgba(15, 23, 42, 0.08);
 }
 
 .home-reveal__handle {
