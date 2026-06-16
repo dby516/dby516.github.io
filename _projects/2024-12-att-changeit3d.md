@@ -1,5 +1,5 @@
 ---
-title: "Tactile-based Online Active Shape Exploration and Reconstruction using Reinforcement Learning"
+title: "Region Attentioned Text-guided 3D Deformation"
 collection: projects
 permalink: /project/2024-12-att-changeit3d
 excerpt: 'This is a team project from the Deep Learning for Computer Vision course at Columbia. We improved a SOTA text-guided shape editing framework [ChangeIt3D](https://changeit3d.github.io/) by leveraging a region-attended editor that leverages shape correspondence to enable more precise, localized geometry modifications.'
