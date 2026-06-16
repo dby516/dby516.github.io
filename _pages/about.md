@@ -9,14 +9,66 @@ redirect_from:
   - /about.html
 ---
 
-<h1 id="about">About me</h1>
+<!-- <h1 id="about">About me</h1>
 
 I am an incoming Ph.D. student in Electrical and Computer Engineering at [Purdue University](https://engineering.purdue.edu/ECE), advised by Prof. [Ziran Wang](https://ziranw.github.io/). Before that, I received my M.S. in Computer Science from [Columbia University](https://www.columbia.edu/) and my B.Eng. from [Zhejiang University](https://www.zju.edu.cn/english/).  
 
 My research interests lie broadly in Machine Learning, Deep Learning and their intersections with Robot Navigation, Manipulation and Computer Vision. I'm especially interested in enabling learning-based methods to benefit robot navigation and motion in open-world environments, as well as in quantifying and constraining the uncertainty introduced by learning methods to form a strong, effective, safe, and trustworthy autonomous system.  
 
 I’m always happy to chat about research, collaborations, or shared interests — feel free to reach out via email! 🤝✨
+ -->
 
+<section class="about-hero" style="background-image: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.42)), url('/images/landscape.png');">
+  <div class="about-hero__content">
+    <h1 id="about">About me</h1>
+
+    <p>I am an incoming Ph.D. student in Electrical and Computer Engineering at <a href="https://engineering.purdue.edu/ECE">Purdue University</a>, advised by Prof. <a href="https://ziranw.github.io/">Ziran Wang</a>. Before that, I received my M.S. in Computer Science from <a href="https://www.columbia.edu/">Columbia University</a> and my B.Eng. from <a href="https://www.zju.edu.cn/english/">Zhejiang University</a>.</p>
+
+    <p>My research interests lie broadly in Machine Learning, Deep Learning and their intersections with Robot Navigation, Manipulation and Computer Vision. I'm especially interested in enabling learning-based methods to benefit robot navigation and motion in open-world environments, as well as in quantifying and constraining the uncertainty introduced by learning methods to form a strong, effective, safe, and trustworthy autonomous system.</p>
+
+    <p>I’m always happy to chat about research, collaborations, or shared interests — feel free to reach out via email! 🤝✨</p>
+  </div>
+</section>
+
+<style>
+.about-hero {
+  min-height: 360px;
+  margin: 0 0 2rem;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.about-hero__content {
+  max-width: 760px;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.about-hero h1 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.about-hero p {
+  color: #fff;
+}
+
+.about-hero a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .about-hero {
+    min-height: 420px;
+    padding: 1.25rem;
+  }
+}
+</style>
 
 <!-- This is the front page of a website that is powered by the [academicpages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages.  -->
 
