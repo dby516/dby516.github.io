@@ -47,7 +47,7 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
   border-radius: 0;
   background-image:
     linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.50) 42%, rgba(0,0,0,0.08) 72%, rgba(0,0,0,0) 100%),
-    url('/images/landscape.png');
+    url('/images/landscape.jpg');
   background-size: cover;
   background-position: center;
 }
