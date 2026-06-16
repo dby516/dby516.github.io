@@ -39,11 +39,11 @@ I’m always happy to chat about research, collaborations, or shared interests �
 
 .about-hero {
   position: relative;
-  min-height: 420px;
-  margin: -2rem calc(50% - 50vw) 2rem 0;
+  min-height: calc(100vh - 72px);
+  margin: -2rem calc(50% - 50vw) 0 0;
   padding: 2rem;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   overflow: hidden;
   border-radius: 0;
   background-image:
@@ -52,7 +52,6 @@ I’m always happy to chat about research, collaborations, or shared interests �
   background-size: cover;
   background-position: center;
 }
-
 .about-hero__content {
   position: relative;
   z-index: 2;
@@ -175,6 +174,27 @@ I’m always happy to chat about research, collaborations, or shared interests �
   padding-top: 1rem;
 }
 
+.home-reveal {
+  position: relative;
+  z-index: 4;
+  margin: -54px calc(50% - 50vw) 0 0;
+  padding: 54px 2rem 0 0;
+  background: #fff;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 -18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.home-reveal__handle {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 72px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.22);
+  transform: translateX(-50%);
+}
+
 </style>
 
 <script>
@@ -210,20 +230,22 @@ I’m always happy to chat about research, collaborations, or shared interests �
 
 <!-- This is the front page of a website that is powered by the [academicpages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages.  -->
 
-<h1 id="news">News</h1>
 
-**[Aug 2026]** I am excited to begin my Ph.D. journey at Purdue ECE. Boiler Up! 🚂🎓🌟  
-**[Jan 2026]** Our [paper](https://arxiv.org/abs/2603.04329) on uncertainty-aware robot navigation was accepted to ACC 2026 🎉
+<section class="home-reveal">
+  <div class="home-reveal__handle"></div>
 
+  <h1 id="news">News</h1>
 
+  <p><strong>[Aug 2026]</strong> I am excited to begin my Ph.D. journey at Purdue ECE. Boiler Up! 🚂🎓🌟</p>
+  <p><strong>[Jan 2026]</strong> Our <a href="https://arxiv.org/abs/2603.04329">paper</a> on uncertainty-aware robot navigation was accepted to ACC 2026 🎉</p>
 
-<h1 id="projects">Projects</h1>
+  <h1 id="projects">Projects</h1>
 
-{% for post in site.projects reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+  {% for post in site.projects reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
 
+  <h1 id="teaching">Teaching</h1>
 
-<h1 id="teaching">Teaching</h1>
-
-<p>COMS 4995 – Deep Learning for Computer Vision, TA, Fall 2025, Columbia University</p>
+  <p>COMS 4995 – Deep Learning for Computer Vision, TA, Fall 2025, Columbia University</p>
+</section>
