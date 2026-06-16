@@ -21,7 +21,7 @@ I’m always happy to chat about research, collaborations, or shared interests �
 News
 ======
 **[Aug 2026]** I am excited to begin my Ph.D. journey at Purdue ECE. Boiler Up! 🚂🎓🌟  
-**[Jan 2026]** Our paper on uncertainty-aware robot navigation was accepted to ACC 2025 🎉
+**[Jan 2026]** Our [paper](https://arxiv.org/abs/2603.04329) on uncertainty-aware robot navigation was accepted to ACC 2025 🎉
 
 
 
