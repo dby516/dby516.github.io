@@ -181,18 +181,29 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 (function () {
   const text = "robot_learning / safe_autonomy / uncertainty_aware_navigation";
   const target = document.getElementById("typed-text");
-  if (!target) return;
 
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      target.textContent += text.charAt(i);
-      i += 1;
-      setTimeout(type, 45);
+  if (target) {
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        target.textContent += text.charAt(i);
+        i += 1;
+        setTimeout(type, 45);
+      }
     }
+    type();
   }
 
-  type();
+  const hero = document.querySelector(".about-hero");
+  const glow = document.querySelector(".about-hero__glow");
+
+  if (hero && glow) {
+    hero.addEventListener("mousemove", function (event) {
+      const rect = hero.getBoundingClientRect();
+      glow.style.left = event.clientX - rect.left + "px";
+      glow.style.top = event.clientY - rect.top + "px";
+    });
+  }
 })();
 </script>
 
