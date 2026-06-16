@@ -1,8 +1,10 @@
 ---
 permalink: /
-# title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
 author_profile: true
-redirect_from: 
+header:
+  overlay_image: landscape.jpg
+  overlay_filter: 0.25
+redirect_from:
   - /about/
   - /about.html
 ---
