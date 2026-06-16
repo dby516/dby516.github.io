@@ -18,6 +18,7 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 <section class="about-hero">
 
   <div class="about-hero__grid"></div>
+  <div class="about-hero__glow"></div>
 
   <div class="about-hero__content hero-text">
     <div class="typewriter">
@@ -127,10 +128,34 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
   text-decoration: underline;
 }
 
+.about-hero__glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(56,189,248,0.22), transparent 66%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  mix-blend-mode: screen;
+}
+
+.about-hero:hover .about-hero__glow {
+  opacity: 1;
+}
+
+
 @media (max-width: 600px) {
   .about-hero {
     min-height: 420px;
     padding: 1.25rem;
+  }
+  .about-hero__glow {
+    display: none;
   }
 }
 
