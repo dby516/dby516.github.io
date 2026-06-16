@@ -35,14 +35,13 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 
 .about-hero {
   min-height: 420px;
-  margin: -1.5rem 0 2rem;
+  margin: -2rem calc(50% - 50vw) 2rem 0;
   padding: 2rem;
   display: flex;
   align-items: flex-end;
   background-size: cover;
   background-position: center;
   border-radius: 0;
-  width: 100%;
 }
 
 .about-hero__content {
