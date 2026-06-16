@@ -28,15 +28,21 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 </section>
 
 <style>
+.page__content {
+  padding-top: 0;
+  margin-top: 0;
+}
+
 .about-hero {
-  min-height: 360px;
-  margin: 0 0 2rem;
+  min-height: 420px;
+  margin: -1.5rem 0 2rem;
   padding: 2rem;
   display: flex;
   align-items: flex-end;
   background-size: cover;
   background-position: center;
   border-radius: 0;
+  width: 100%;
 }
 
 .about-hero__content {
@@ -44,7 +50,6 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
   color: #fff;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
-
 .about-hero h1 {
   margin-top: 0;
   color: #fff;
