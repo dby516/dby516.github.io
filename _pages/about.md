@@ -150,14 +150,51 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 
 @media (max-width: 600px) {
   .about-hero {
-    min-height: 420px;
-    padding: 1.25rem;
+    min-height: calc(100svh - 64px);
+    margin: -1rem 0 0;
+    padding: 4rem 1.25rem 5.5rem;
+    align-items: center;
   }
+
+  .about-hero__content {
+    max-width: 100%;
+  }
+
+  .typewriter {
+    min-height: 2.8em;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .about-hero h1 {
+    font-size: 1.8rem;
+    line-height: 1.1;
+  }
+
+  .about-hero p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .about-hero__grid {
+    opacity: 0.1;
+    background-size: 28px 28px;
+  }
+
   .about-hero__glow {
     display: none;
   }
-}
 
+  .home-reveal {
+    margin: -44px 0 0;
+    padding: 44px 1.25rem 0;
+  }
+
+  .home-reveal__handle {
+    top: 14px;
+  }
+}
 
 #news,
 #projects,
@@ -195,6 +232,58 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
   transform: translateX(-50%);
 }
 
+.about-hero,
+.home-reveal {
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .about-hero {
+    min-height: calc(100svh - 64px);
+    margin: -1rem 0 0;
+    padding: 4rem 1.25rem 5.5rem;
+    align-items: center;
+  }
+
+  .about-hero__content {
+    max-width: 100%;
+  }
+
+  .typewriter {
+    min-height: 2.8em;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .about-hero h1 {
+    font-size: 1.8rem;
+    line-height: 1.1;
+  }
+
+  .about-hero p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .about-hero__grid {
+    opacity: 0.1;
+    background-size: 28px 28px;
+  }
+
+  .about-hero__glow {
+    display: none;
+  }
+
+  .home-reveal {
+    margin: -44px 0 0;
+    padding: 44px 1.25rem 0;
+  }
+
+  .home-reveal__handle {
+    top: 14px;
+  }
+}
 </style>
 
 <script>
