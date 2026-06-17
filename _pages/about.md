@@ -177,7 +177,7 @@ Iâ€™m always happy to chat about research, collaborations, or shared interests â
 .home-reveal {
   position: relative;
   z-index: 4;
-  margin: -54rem max(-9vw, -120px) 0 0;
+  margin: -54px max(-9vw, -120px) 0 0;
   padding: 54px 2rem 0 2rem;
   background: #fff;
   border-top: 1px solid rgba(15, 23, 42, 0.08);
