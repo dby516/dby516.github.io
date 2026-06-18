@@ -153,6 +153,10 @@ redirect_from:
     margin-top: 2.5rem;
   }
 }
+.research-keyword {
+  font-weight: 600;
+  color: #1f6f8b;
+}
 </style>
 
 <script>
@@ -178,9 +182,9 @@ redirect_from:
 
 <h1 id="about">About me</h1>
 
-<p>I am an incoming Ph.D. student in Electrical and Computer Engineering at <a href="https://engineering.purdue.edu/ECE">Purdue University</a>, advised by Prof. <a href="https://ziranw.github.io/">Ziran Wang</a>. Before that, I received my M.S. in Computer Science from <a href="https://www.columbia.edu/">Columbia University</a> and my B.Eng. from <a href="https://www.zju.edu.cn/english/">Zhejiang University</a>.</p>
+<p>I am an incoming <strong>Ph.D. student in Electrical and Computer Engineering</strong> at <a href="https://engineering.purdue.edu/ECE">Purdue University</a>, advised by Prof. <a href="https://ziranw.github.io/">Ziran Wang</a>. Before that, I received my M.S. in Computer Science from <a href="https://www.columbia.edu/">Columbia University</a> and my B.Eng. from <a href="https://www.zju.edu.cn/english/">Zhejiang University</a>.</p>
 
-<p>My research interests broadly lie in machine learning and its intersections with autonomous systems and computer vision. I am especially interested in developing more interpretable and generalizable learning-based systems, with the goal of enabling autonomous systems that are effective, robust, safe, and trustworthy.</p>
+<p>My research interests broadly lie in machine learning and its intersections with <span class="research-keyword">autonomous systems</span> and <span class="research-keyword">computer vision</span>. I am especially interested in building <span class="research-keyword">interpretable</span> and <span class="research-keyword">generalizable learning-based systems</span> that support effective, robust, safe, and trustworthy autonomy.</p>
 
 <p>I’m always happy to chat about research, collaborations, or shared interests — feel free to reach out via email! 🤝✨</p>
 
