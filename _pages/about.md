@@ -168,7 +168,7 @@ redirect_from:
   opacity: 0;
   transform: translate3d(-50%, -50%, 0);
   transition: opacity 0.18s ease;
-  mix-blend-mode: screen;
+  box-shadow: 0 0 22px rgba(14, 165, 233, 0.22);
 }
 
 .cursor-orbit::before,
@@ -176,7 +176,7 @@ redirect_from:
   content: "";
   position: absolute;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(125, 211, 252, 0.36), rgba(125, 211, 252, 0.06) 42%, transparent 68%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.42), rgba(14, 165, 233, 0.14) 42%, transparent 70%);
 }
 
 .cursor-orbit::before {
@@ -199,13 +199,13 @@ redirect_from:
   position: fixed;
   width: 12px;
   height: 12px;
-  border: 1px solid rgba(125, 211, 252, 0.72);
+  border: 1px solid rgba(14, 165, 233, 0.82);
   border-radius: 999px;
   pointer-events: none;
   z-index: 10000;
   transform: translate(-50%, -50%) scale(1);
   animation: cursorRipple 0.7s ease-out forwards;
-  mix-blend-mode: screen;
+  box-shadow: 0 0 22px rgba(14, 165, 233, 0.22);
 }
 
 @keyframes cursorOrbitA {
