@@ -157,6 +157,80 @@ redirect_from:
   font-weight: 600;
   color: #1f6f8b;
 }
+.cursor-orbit {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 180px;
+  height: 180px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0);
+  transition: opacity 0.18s ease;
+  mix-blend-mode: screen;
+}
+
+.cursor-orbit::before,
+.cursor-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.36), rgba(125, 211, 252, 0.06) 42%, transparent 68%);
+}
+
+.cursor-orbit::before {
+  width: 42px;
+  height: 42px;
+  left: 28px;
+  top: 36px;
+  animation: cursorOrbitA 3.2s linear infinite;
+}
+
+.cursor-orbit::after {
+  width: 24px;
+  height: 24px;
+  right: 34px;
+  bottom: 42px;
+  animation: cursorOrbitB 4.4s linear infinite;
+}
+
+.cursor-ripple {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(125, 211, 252, 0.72);
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%) scale(1);
+  animation: cursorRipple 0.7s ease-out forwards;
+  mix-blend-mode: screen;
+}
+
+@keyframes cursorOrbitA {
+  from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+@keyframes cursorOrbitB {
+  from { transform: rotate(360deg) translateX(8px) rotate(-360deg); }
+  to { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+}
+
+@keyframes cursorRipple {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(7);
+  }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-orbit,
+  .cursor-ripple {
+    display: none;
+  }
+}
 </style>
 
 <script>
@@ -178,13 +252,62 @@ redirect_from:
 
   type();
 })();
+(function () {
+  if (!window.matchMedia || window.matchMedia("(hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const orbit = document.createElement("div");
+  orbit.className = "cursor-orbit";
+  document.body.appendChild(orbit);
+
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 2;
+  let currentX = targetX;
+  let currentY = targetY;
+  let visible = false;
+
+  document.addEventListener("mousemove", function (event) {
+    targetX = event.clientX;
+    targetY = event.clientY;
+    if (!visible) {
+      visible = true;
+      orbit.style.opacity = "1";
+    }
+  });
+
+  document.addEventListener("mouseleave", function () {
+    visible = false;
+    orbit.style.opacity = "0";
+  });
+
+  document.addEventListener("click", function (event) {
+    const ripple = document.createElement("span");
+    ripple.className = "cursor-ripple";
+    ripple.style.left = event.clientX + "px";
+    ripple.style.top = event.clientY + "px";
+    document.body.appendChild(ripple);
+    ripple.addEventListener("animationend", function () {
+      ripple.remove();
+    });
+  });
+
+  function animate() {
+    currentX += (targetX - currentX) * 0.12;
+    currentY += (targetY - currentY) * 0.12;
+    orbit.style.transform = "translate3d(" + currentX + "px, " + currentY + "px, 0) translate(-50%, -50%)";
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
 </script>
 
 <h1 id="about">About me</h1>
 
 <p>I am an incoming <strong>Ph.D. student in Electrical and Computer Engineering</strong> at <a href="https://engineering.purdue.edu/ECE">Purdue University</a>, advised by Prof. <a href="https://ziranw.github.io/">Ziran Wang</a>. Before that, I received my M.S. in Computer Science from <a href="https://www.columbia.edu/">Columbia University</a> and my B.Eng. from <a href="https://www.zju.edu.cn/english/">Zhejiang University</a>.</p>
 
-<p>My research interests broadly lie in machine learning and its intersections with <span class="research-keyword">autonomous systems</span> and <span class="research-keyword">computer vision</span>. I am especially interested in building <span class="research-keyword">interpretable</span> and <span class="research-keyword">generalizable learning-based systems</span> that support effective, robust, safe, and trustworthy autonomy.</p>
+<p>My research interests broadly lie in <span class="research-keyword">machine learning</span> and its intersections with <span class="research-keyword">autonomous systems</span> and <span class="research-keyword">computer vision</span>. I am especially interested in building <span class="research-keyword">interpretable</span> and <span class="research-keyword">generalizable learning-based systems</span> that support effective, robust, safe, and trustworthy autonomy.</p>
 
 <p>I’m always happy to chat about research, collaborations, or shared interests — feel free to reach out via email! 🤝✨</p>
 
