@@ -157,77 +157,17 @@ redirect_from:
   font-weight: 600;
   color: #1f6f8b;
 }
-.cursor-orbit {
+.cursor-mesh {
   position: fixed;
-  left: 0;
-  top: 0;
-  width: 180px;
-  height: 180px;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0;
-  transform: translate3d(-50%, -50%, 0);
-  transition: opacity 0.18s ease;
-  box-shadow: 0 0 22px rgba(14, 165, 233, 0.22);
-}
-
-.cursor-orbit::before,
-.cursor-orbit::after {
-  content: "";
-  position: absolute;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.42), rgba(14, 165, 233, 0.14) 42%, transparent 70%);
-}
-
-.cursor-orbit::before {
-  width: 42px;
-  height: 42px;
-  left: 28px;
-  top: 36px;
-  animation: cursorOrbitA 3.2s linear infinite;
-}
-
-.cursor-orbit::after {
-  width: 24px;
-  height: 24px;
-  right: 34px;
-  bottom: 42px;
-  animation: cursorOrbitB 4.4s linear infinite;
-}
-
-.cursor-ripple {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  border: 1px solid rgba(14, 165, 233, 0.82);
-  border-radius: 999px;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%) scale(1);
-  animation: cursorRipple 0.7s ease-out forwards;
-  box-shadow: 0 0 22px rgba(14, 165, 233, 0.22);
-}
-
-@keyframes cursorOrbitA {
-  from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
-}
-
-@keyframes cursorOrbitB {
-  from { transform: rotate(360deg) translateX(8px) rotate(-360deg); }
-  to { transform: rotate(0deg) translateX(8px) rotate(0deg); }
-}
-
-@keyframes cursorRipple {
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(7);
-  }
 }
 
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .cursor-orbit,
-  .cursor-ripple {
+  .cursor-mesh {
     display: none;
   }
 }
@@ -252,53 +192,136 @@ redirect_from:
 
   type();
 })();
+
 (function () {
   if (!window.matchMedia || window.matchMedia("(hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)").matches) {
     return;
   }
 
-  const orbit = document.createElement("div");
-  orbit.className = "cursor-orbit";
-  document.body.appendChild(orbit);
+  const canvas = document.createElement("canvas");
+  canvas.className = "cursor-mesh";
+  canvas.setAttribute("aria-hidden", "true");
+  document.body.appendChild(canvas);
 
-  let targetX = window.innerWidth / 2;
-  let targetY = window.innerHeight / 2;
-  let currentX = targetX;
-  let currentY = targetY;
+  const ctx = canvas.getContext("2d");
+  const pointCount = 7;
+  const nodes = [];
+  let dpr = 1;
+  let width = 0;
+  let height = 0;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let centerX = mouseX;
+  let centerY = mouseY;
   let visible = false;
+  let impulse = 0;
+
+  for (let index = 0; index < pointCount; index += 1) {
+    nodes.push({
+      x: mouseX,
+      y: mouseY,
+      vx: 0,
+      vy: 0,
+      angle: (Math.PI * 2 * index) / pointCount,
+      radius: 28 + (index % 3) * 13
+    });
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function drawLine(a, b, alpha) {
+    ctx.strokeStyle = "rgba(14, 165, 233, " + alpha + ")";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    centerX += (mouseX - centerX) * 0.14;
+    centerY += (mouseY - centerY) * 0.14;
+    impulse *= 0.9;
+
+    if (visible) {
+      const time = performance.now() * 0.001;
+      const center = { x: centerX, y: centerY };
+      const baseAlpha = 0.18 + impulse * 0.08;
+      const webRadius = 1 + impulse * 0.65;
+
+      nodes.forEach(function (node, index) {
+        const drift = time * (0.7 + index * 0.08);
+        const targetRadius = (node.radius + Math.sin(time * 1.3 + index) * 7) * webRadius;
+        const targetAngle = node.angle + drift;
+        const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+        const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+        node.vx += (targetX - node.x) * 0.045;
+        node.vy += (targetY - node.y) * 0.045;
+        node.vx *= 0.72;
+        node.vy *= 0.72;
+        node.x += node.vx;
+        node.y += node.vy;
+      });
+
+      nodes.forEach(function (node) {
+        const distance = Math.hypot(node.x - centerX, node.y - centerY);
+        const alpha = Math.max(0, baseAlpha - distance / 420);
+        drawLine(center, node, alpha);
+      });
+
+      for (let a = 0; a < nodes.length; a += 1) {
+        for (let b = a + 1; b < nodes.length; b += 1) {
+          const distance = Math.hypot(nodes[a].x - nodes[b].x, nodes[a].y - nodes[b].y);
+          if (distance < 95) {
+            drawLine(nodes[a], nodes[b], (1 - distance / 95) * (0.28 + impulse * 0.12));
+          }
+        }
+      }
+
+      nodes.forEach(function (node) {
+        ctx.fillStyle = "rgba(14, 165, 233, 0.42)";
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 2.1 + impulse * 0.6, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.fillStyle = "rgba(14, 165, 233, 0.22)";
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 1.8 + impulse * 0.4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+  }
 
   document.addEventListener("mousemove", function (event) {
-    targetX = event.clientX;
-    targetY = event.clientY;
-    if (!visible) {
-      visible = true;
-      orbit.style.opacity = "1";
-    }
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    visible = true;
   });
 
   document.addEventListener("mouseleave", function () {
     visible = false;
-    orbit.style.opacity = "0";
   });
 
-  document.addEventListener("click", function (event) {
-    const ripple = document.createElement("span");
-    ripple.className = "cursor-ripple";
-    ripple.style.left = event.clientX + "px";
-    ripple.style.top = event.clientY + "px";
-    document.body.appendChild(ripple);
-    ripple.addEventListener("animationend", function () {
-      ripple.remove();
-    });
+  document.addEventListener("click", function () {
+    impulse = 1;
   });
 
-  function animate() {
-    currentX += (targetX - currentX) * 0.12;
-    currentY += (targetY - currentY) * 0.12;
-    orbit.style.transform = "translate3d(" + currentX + "px, " + currentY + "px, 0) translate(-50%, -50%)";
-    requestAnimationFrame(animate);
-  }
-
+  window.addEventListener("resize", resize);
+  resize();
   animate();
 })();
 </script>
