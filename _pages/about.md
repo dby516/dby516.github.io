@@ -206,6 +206,7 @@ redirect_from:
   const ctx = canvas.getContext("2d");
   const pointCount = 7;
   const nodes = [];
+  const bursts = [];
   let dpr = 1;
   let width = 0;
   let height = 0;
@@ -214,7 +215,7 @@ redirect_from:
   let centerX = mouseX;
   let centerY = mouseY;
   let visible = false;
-  let impulse = 0;
+  let presence = 0;
 
   for (let index = 0; index < pointCount; index += 1) {
     nodes.push({
@@ -223,7 +224,10 @@ redirect_from:
       vx: 0,
       vy: 0,
       angle: (Math.PI * 2 * index) / pointCount,
-      radius: 28 + (index % 3) * 13
+      radius: 28 + (index % 3) * 13,
+      spring: 0.026 + index * 0.0045,
+      damping: 0.61 + (index % 4) * 0.055,
+      pulse: 0.65 + index * 0.37
     });
   }
 
@@ -248,17 +252,29 @@ redirect_from:
   }
 
   function animate() {
+    const now = performance.now();
     ctx.clearRect(0, 0, width, height);
 
     centerX += (mouseX - centerX) * 0.14;
     centerY += (mouseY - centerY) * 0.14;
-    impulse *= 0.9;
+    presence += ((visible ? 1 : 0) - presence) * 0.08;
 
-    if (visible) {
-      const time = performance.now() * 0.001;
+    for (let index = bursts.length - 1; index >= 0; index -= 1) {
+      if (now - bursts[index].startedAt > 1700) {
+        bursts.splice(index, 1);
+      }
+    }
+
+    if (presence > 0.01) {
+      const time = now * 0.001;
       const center = { x: centerX, y: centerY };
-      const baseAlpha = 0.18 + impulse * 0.08;
-      const webRadius = 1 + impulse * 0.65;
+      const activeBurst = bursts[bursts.length - 1];
+      const burstProgress = activeBurst ? Math.min((now - activeBurst.startedAt) / 1700, 1) : 1;
+      const burstFade = activeBurst ? Math.pow(1 - burstProgress, 1.7) : 0;
+      const burstExpand = activeBurst ? burstProgress * 1.25 + Math.sin(burstProgress * Math.PI) * 0.18 : 0;
+      const breath = 0.82 + Math.sin(time * 1.7) * 0.18;
+      const baseAlpha = (0.16 + burstFade * 0.16) * presence * breath;
+      const webRadius = 1 + burstExpand;
 
       nodes.forEach(function (node, index) {
         const drift = time * (0.7 + index * 0.08);
@@ -267,10 +283,10 @@ redirect_from:
         const targetX = centerX + Math.cos(targetAngle) * targetRadius;
         const targetY = centerY + Math.sin(targetAngle) * targetRadius;
 
-        node.vx += (targetX - node.x) * 0.045;
-        node.vy += (targetY - node.y) * 0.045;
-        node.vx *= 0.72;
-        node.vy *= 0.72;
+        node.vx += (targetX - node.x) * node.spring;
+        node.vy += (targetY - node.y) * node.spring;
+        node.vx *= node.damping;
+        node.vy *= node.damping;
         node.x += node.vx;
         node.y += node.vy;
       });
@@ -285,21 +301,22 @@ redirect_from:
         for (let b = a + 1; b < nodes.length; b += 1) {
           const distance = Math.hypot(nodes[a].x - nodes[b].x, nodes[a].y - nodes[b].y);
           if (distance < 95) {
-            drawLine(nodes[a], nodes[b], (1 - distance / 95) * (0.28 + impulse * 0.12));
+            drawLine(nodes[a], nodes[b], (1 - distance / 95) * (0.28 + burstFade * 0.24) * presence);
           }
         }
       }
 
       nodes.forEach(function (node) {
-        ctx.fillStyle = "rgba(14, 165, 233, 0.42)";
+        const nodeAlpha = (0.24 + Math.sin(time * 2.1 + node.pulse) * 0.12 + burstFade * 0.24) * presence;
+        ctx.fillStyle = "rgba(14, 165, 233, " + nodeAlpha + ")";
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 2.1 + impulse * 0.6, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, 2.1 + burstFade * 1.2, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      ctx.fillStyle = "rgba(14, 165, 233, 0.22)";
+      ctx.fillStyle = "rgba(14, 165, 233, " + (0.18 * presence + burstFade * 0.14) + ")";
       ctx.beginPath();
-      ctx.arc(centerX, centerY, 1.8 + impulse * 0.4, 0, Math.PI * 2);
+      ctx.arc(centerX, centerY, 1.8 + burstFade * 0.8, 0, Math.PI * 2);
       ctx.fill();
     }
 
@@ -317,7 +334,10 @@ redirect_from:
   });
 
   document.addEventListener("click", function () {
-    impulse = 1;
+    bursts.push({ startedAt: performance.now() });
+    if (bursts.length > 3) {
+      bursts.shift();
+    }
   });
 
   window.addEventListener("resize", resize);
