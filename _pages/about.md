@@ -26,7 +26,7 @@ I’m always happy to chat about research, collaborations, or shared interests �
     </div>
     <h1 id="about">About me</h1>
     <p>I am an incoming Ph.D. student in Electrical and Computer Engineering at <a href="https://engineering.purdue.edu/ECE">Purdue University</a>, advised by Prof. <a href="https://ziranw.github.io/">Ziran Wang</a>. Before that, I received my M.S. in Computer Science from <a href="https://www.columbia.edu/">Columbia University</a> and my B.Eng. from <a href="https://www.zju.edu.cn/english/">Zhejiang University</a>.</p>
-    <p>My research interests lie broadly in Machine Learning, Deep Learning and their intersections with Robot Navigation, Manipulation and Computer Vision. I'm especially interested in enabling learning-based methods to benefit robot navigation and motion in open-world environments, as well as in quantifying and constraining the uncertainty introduced by learning methods to form a strong, effective, safe, and trustworthy autonomous system.</p>
+    <p>My research interests broadly lie in machine learning and its intersections with autonomous systems and computer vision. I am especially interested in developing more interpretable and generalizable learning-based systems, with the goal of enabling autonomous systems that are effective, robust, safe, and trustworthy.</p>
     <p>I’m always happy to chat about research, collaborations, or shared interests — feel free to reach out via email! 🤝✨</p>
   </div>
 </section>
@@ -288,7 +288,7 @@ I’m always happy to chat about research, collaborations, or shared interests �
 
 <script>
 (function () {
-  const text = "robot_learning / safe_autonomy / uncertainty_aware_navigation";
+  const text = "robotics / trustworthy_autonomy / generalizable_learning";
   const target = document.getElementById("typed-text");
 
   if (target) {
